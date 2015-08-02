@@ -1,8 +1,8 @@
-# Установка
-* добавить `chat` в INSTALLED_APPS
-* добавить `chat.ChatBackend` в AUTHENTICATION_BACKENDS
-* задать CHAT_BASE (например `https://chathost:1337/`)
+# РЈСЃС‚Р°РЅРѕРІРєР°
+* РґРѕР±Р°РІРёС‚СЊ `chat` РІ INSTALLED_APPS
+* РґРѕР±Р°РІРёС‚СЊ `chat.ChatBackend` РІ AUTHENTICATION_BACKENDS
+* Р·Р°РґР°С‚СЊ CHAT_BASE (РЅР°РїСЂРёРјРµСЂ `https://chathost:1337/`)
 
-# Зависимости
+# Р—Р°РІРёСЃРёРјРѕСЃС‚Рё
 * django
 * requests (http://requests.readthedocs.org/en/latest/)
