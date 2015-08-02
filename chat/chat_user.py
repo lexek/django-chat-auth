@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -24,7 +25,7 @@ class ChatUser(models.Model):
     @staticmethod
     def __fill_user(user, profile):
         role = profile['user']['role']
-        user.password = User.objects.make_random_password()
+        user.password = make_password(None)
         user.username = profile['user']['name'] + '@chat'
         admin = role == 'SUPERADMIN'
         user.is_superuser = user.is_superuser or admin
