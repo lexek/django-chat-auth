@@ -11,7 +11,7 @@ from chat.chat_user import ChatUser
 class ChatBackend(object):
     @transaction.atomic
     def authenticate(self, username=None, password=None):
-        r = requests.get(settings.CHAT_BASE + 'rest/profile', auth=(username, password), verify=False)
+        r = requests.get(settings.CHAT_BASE + 'rest/profile', auth=(username, password))
 
         if r.status_code == 200:
             data = r.json()
