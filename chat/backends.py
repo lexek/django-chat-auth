@@ -1,10 +1,9 @@
 from django.conf import settings
-
 from django.contrib.auth.models import User
 from django.db import transaction
 import requests
 
-from chat.chat_user import ChatUser
+from chat.model.chat_user import ChatUser
 
 
 class BackendBase(object):
