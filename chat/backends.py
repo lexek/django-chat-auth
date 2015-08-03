@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db import transaction
 import requests
 
-from chat.model.chat_user import ChatUser
+from chat.models import ChatUser
 
 
 class BackendBase(object):
@@ -29,11 +29,11 @@ class BasicChatBackend(BackendBase):
 
 class TransparentChatAuthenticationBackend(BackendBase):
     @transaction.atomic
-    def authenticate(self, sid=None, **kwargs):
-        if not sid:
+    def authenticate(self, sid=None, ip=None, **kwargs):
+        if not sid or not ip:
             return
 
-        r = requests.get(settings.CHAT_BASE + 'rest/profile', cookies={"sid": sid}, verify=False)
+        r = requests.get(settings.CHAT_BASE + 'rest/profile', cookies={"sid": sid}, verify=False, headers={'X-REAL-IP': ip})
         if r.status_code == 200:
             profile = r.json()
             return ChatUser.from_profile(r.json(), profile["user"]["name"])

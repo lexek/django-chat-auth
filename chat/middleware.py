@@ -19,7 +19,7 @@ class ChatSessionAuthenticationMiddleware(object):
         if request.user.is_authenticated():
             return
 
-        user = auth.authenticate(sid=sid)
+        user = auth.authenticate(sid=sid, ip=request.META['REMOTE_ADDR'])
         if user:
             request.user = user
             auth.login(request, user)

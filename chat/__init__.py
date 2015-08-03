@@ -1,3 +1,3 @@
 from backends import BasicChatBackend, TransparentChatAuthenticationBackend
 from middleware import ChatSessionAuthenticationMiddleware
-from chat.model.chat_user import ChatUser
+from chat.models import ChatUser
