@@ -14,7 +14,7 @@ class ChatUser(models.Model):
             chat_user = ChatUser.objects.get(id=profile['user']['id'])
             ChatUser.__fill_user(chat_user.user, profile)
         except ChatUser.DoesNotExist:
-            user = User.objects.create_user(username)
+            user = User.objects.create_user(username + '@chat')
             ChatUser.__fill_user(user, profile)
             chat_user = ChatUser()
             chat_user.id = profile['user']['id']
